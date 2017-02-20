@@ -1,0 +1,5 @@
+<h1><%= @bucketlist.name %></h1>
+<hr />
+
+<%= link_to 'New Item', new_bucketlist_list_item_path(@bucketlist) %> |
+<%= link_to 'Back', bucketlists_path(@user)%>
