@@ -1,7 +1,7 @@
 <%= form_for [@bucketlist, @list_item] do |f| %>
   
-  <%= f.label :list_name %>
-  <%= f.text_field :list_name %>
+  <%= f.label :item_name %>
+  <%= f.text_field :item_name %>
 
   <%= f.label :description %>
   <%= f.text_field :description %>
@@ -10,6 +10,6 @@
   <%= f.text_field :do_by %>
 
   <%= f.submit %>
-  
+
 <% end %>
   

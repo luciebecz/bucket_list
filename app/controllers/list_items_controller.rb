@@ -10,15 +10,16 @@ class ListItemsController < ApplicationController
   end
 
   def new
-    @list_item = @bucketlist.list_items.new
+    @list_item = ListItem.new
   end
 
   def create
     @list_item = @bucketlist.list_items.new(list_item_params)
     if @list_item.save
-      flash[:success] = 'List Item Added!'
-      redirect_to bucketlist_list_item_path(@bucketlist, @list_item)
+      flash[:success] = 'List Item Created!'
+      redirect_to bucketlist_path(@bucketlist)
     else 
+      flash[:error] = 'Not added'
       render :new
     end 
   end 
@@ -29,7 +30,7 @@ class ListItemsController < ApplicationController
   def update 
     if @list_item.update(list_item_params)
       flash[:success] = 'List Item Updated!'
-       redirect_to bucketlist_list_item_path(@bucketlist, @list_item)
+       redirect_to bucketlist_path(@bucketlist)
     else 
       render :edit
     end 
@@ -37,13 +38,13 @@ class ListItemsController < ApplicationController
 
   def destroy 
     @list_item.destroy 
-    redirect_to bucketlist_list_item_path(@bucketlist)
+    redirect_to bucketlist_list_items_path(@bucketlist)
   end 
 
   private 
 
   def list_item_params
-    params.require(:list_items).permit(:item_name, :description, :do_by)
+    params.require[:list_item].permit(:item_name, :description, :do_by, :bucketlist_id)
   end 
 
   def set_list_item

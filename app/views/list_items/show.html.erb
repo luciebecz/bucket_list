@@ -1,2 +1,14 @@
-<h1>ListItems#show</h1>
-<p>Find me in app/views/list_items/show.html.erb</p>
+
+<h1><%= @list_item.item_name%></h1>
+<hr />
+<ul class='list-group'>
+  <% @list_items.each do |list_item| %>
+    <li class='list-group-item'>
+      <%= link_to 'Show', list_item %> |
+      <%= link_to 'Edit Item' %>
+      <%= link_to 'Delete Item'%>
+      <!-- add routes -->
+    </li>
+  <% end %>
+</ul>
+

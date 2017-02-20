@@ -1,0 +1,15 @@
+  <div class="navbar-fixed">
+    <nav class='amber darken-2'>
+      <div class="nav-wrapper">
+        <a href="#!" class="brand-logo center">Bucket List</a>
+        <ul class="right hide-on-small">
+          <% if user_signed_in? %>
+            <li><%= link_to 'Your Lists', bucketlists_path %></li>
+            <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li></li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+  </div>
